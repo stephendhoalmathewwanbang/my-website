@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>About Me - Stephen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+        background: linear-gradient(
+            rgba(36, 87, 34, 0.55),
+            rgba(36, 87, 34, 0.55)
+          ),
+          url("Images/IMG_2161.JPG") no-repeat center center fixed;
+        background-size: cover;
+        color: #222;
+        margin: 0;
+        padding: 0;
+      }
+      .header {
+        display: flex;
+        align-items: center;
+        background: linear-gradient(90deg, #256029 60%, #388e3c 100%);
+        color: #fff;
+        padding: 20px 40px;
+        justify-content: space-between;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        border-bottom-left-radius: 18px;
+        border-bottom-right-radius: 18px;
+      }
+      .profile-header {
+        display: flex;
+        align-items: center;
+      }
+      .profile-header img {
+        width: 72px;
+        height: 72px;
+        border-radius: 16px;
+        margin-right: 18px;
+        border: 3px solid #fff;
+        object-fit: cover;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .menu {
+        display: flex;
+        gap: 25px;
+      }
+      .menu a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 10px 22px;
+        border-radius: 6px;
+        transition: background 0.2s, color 0.2s;
+        letter-spacing: 0.5px;
+        font-size: 1.08em;
+      }
+      .menu a:hover {
+        background: #fff;
+        color: #256029;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+      .nav-dropdown {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      .nav-dropdown-content {
+        display: none;
+        position: absolute;
+        background: #fff;
+        min-width: 200px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        border-radius: 8px;
+        overflow: hidden;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 10px;
+      }
+      .nav-dropdown-content a {
+        color: #333;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        transition: background 0.2s;
+        border-bottom: 1px solid #f0f0f0;
+        font-weight: 500;
+        font-size: 0.95em;
+      }
+      .nav-dropdown-content a:last-child {
+        border-bottom: none;
+      }
+      .nav-dropdown-content a:hover {
+        background: #256029;
+        color: #fff;
+      }
+      .nav-dropdown:hover .nav-dropdown-content {
+        display: block;
+      }
+      .nav-dropdown::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid #fff;
+        display: none;
+      }
+      .nav-dropdown:hover::after {
+        display: block;
+      }
+      .dropdown-indicator {
+        margin-left: 5px;
+        font-size: 0.8em;
+        transition: transform 0.2s;
+      }
+      .nav-dropdown:hover .dropdown-indicator {
+        transform: rotate(180deg);
+      }
+      .about-main {
+        max-width: 900px;
+        margin: 40px auto 0 auto;
+        padding: 48px 32px 32px 32px;
+        text-align: center;
+      }
+      .about-profile-img {
+        width: 140px;
+        height: 140px;
+        border-radius: 18px;
+        object-fit: cover;
+        border: 4px solid #256029;
+        margin-bottom: 18px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .about-main h1 {
+        font-size: 2.2rem;
+        color: #fff;
+        margin-bottom: 18px;
+        letter-spacing: 1px;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35),
+          0 4px 16px rgba(0, 0, 0, 0.25);
+      }
+      .about-main .info {
+        text-align: left;
+        margin: 0 auto;
+        max-width: 700px;
+      }
+      .about-main .info p {
+        line-height: 1.8;
+        color: #fff;
+        font-size: 1.18rem;
+        margin-bottom: 18px;
+        text-shadow: 0 2px 8px rgba(255, 255, 255, 0.25),
+          0 4px 16px rgba(0, 0, 0, 0.18);
+      }
+      .about-main .info a {
+        color: #1a73e8;
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .about-main .info a:hover {
+        text-decoration: underline;
+        color: #256029;
+      }
+      .about-social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 28px;
+        margin: 32px 0 0 0;
+      }
+      .about-social-icons a {
+        color: #fff;
+        font-size: 2.2rem;
+        transition: color 0.2s, transform 0.2s;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+      }
+      .about-social-icons a:hover {
+        color: #1a73e8;
+        transform: scale(1.15);
+      }
+      @media (max-width: 900px) {
+        .about-main {
+          padding: 24px 8px 24px 8px;
+        }
+        .about-profile-img {
+          width: 100px;
+          height: 100px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="profile-header">
+        <img src="Images/IMG_2259.JPG" alt="Profile Picture" />
+        <span>Stephen Dhoal Mathew Wanbang</span>
+      </div>
+      <nav class="menu">
+        <a href="Sample1.html">Home</a>
+        <a href="about.html">About</a>
+                  <div class="nav-dropdown">
+            <a href="projects.html">Projects <span class="dropdown-indicator"><i class="fas fa-caret-down"></i></span></a>
+            <div class="nav-dropdown-content">
+              <a href="srhr.html">SRHR</a>
+              <a href="peace-building.html">Peace Building</a>
+              <a href="advocacy.html">Advocacy</a>
+            </div>
+          </div>
+        <a href="publications.html">Publications</a>
+      </nav>
+    </div>
+    <div class="about-main">
+      <img
+        src="Images/IMG_2259.JPG"
+        alt="Stephen's Profile Photo"
+        class="about-profile-img"
+      />
+      <h1>About Me</h1>
+      <div class="info">
+        <p>
+          I am a refugee rights, sexual reproductive health and rights (SRHR)
+          advocate, refugee researcher and a peace builder from South Sudan
+          living in Uganda as a refugee. My advocacy, research and peace
+          building experience in displaced settings spans to five years.
+        </p>
+        <p>
+          Having experienced displacement myself, my passion in advocating for
+          my fellow refugee rights stems from my own experiences of
+          displacement. I am currently a co-founder and program coordinator at
+          Youth Action for Community Transformation (YACOT) and served with many
+          international organizations like Windle International Uganda,
+          Resettlement Support Center (RSC Africa), IDinsight, Center for
+          Evaluation and Development Uganda (C4ED) and Give Directly in refugee
+          camps from Uganda.
+        </p>
+        <p>
+          As the co-founder and program coordinator of Youth Action for
+          Community Transformation (YACOT), I have developed and implemented
+          advocacy programs in areas of sexual reproductive health and rights
+          and peace building. These advocacy programs include dialogues,
+          trainings and awareness campaigns which aimed at raising awareness on
+          refugee rights especially in areas of sexual reproductive health and
+          rights and peace building. The programs I have developed and
+          implemented directly impacted 3000 refugee and host community members
+          from Rhino Camp Refugee Settlement.
+        </p>
+        <p>
+          In addition, I am a certified peace builder trained by the African
+          Centre for the Constructive Resolution of Disputes (ACCORD) and
+          International Center for Peace, Human Rights and Development
+          (IPHRD-Africa) on conflict management and resolution, mediation and
+          dialogue. I am also an alumni of Kuza Amani and Youth in Action
+          Fellowships. I also was selected to represent refugee youth by the
+          United Nation Human Rights Office of the High Commissioner for East
+          and Horn of Africa in a consultation meeting on fostering youth
+          participation in governance, peace and security in the context of
+          human rights 75 in 2023.
+        </p>
+      </div>
+      <div class="about-social-icons">
+        <a
+          href="https://www.instagram.com/stephendhoal18?igsh=YzljYTk1ODg3Zg=="
+          target="_blank"
+          title="Instagram"
+          ><i class="fab fa-instagram"></i
+        ></a>
+        <a href="https://x.com/dhoal_mathew?t=SMiO-c_a8TMGyn0jbkSQoA&s=09" target="_blank" title="X"
+          ><i class="fab fa-x-twitter"></i
+        ></a>
+        <a
+          href="https://www.facebook.com/dhoalwanbang.nyater"
+          target="_blank"
+          title="Facebook"
+          ><i class="fab fa-facebook"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/in/stephen-dhoal-mathew-wanbang-09256721b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+          target="_blank"
+          title="LinkedIn"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+      </div>
+    </div>
+    <footer
+      style="
+        background: #256029;
+        color: #fff;
+        text-align: center;
+        padding: 18px 0;
+        font-size: 1.05em;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        margin-top: 40px;
+        letter-spacing: 0.5px;
+      "
+    >
+      &copy; 2024 Stephen Dhoal Mathew Wanbang. All rights reserved.
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stephen's Home Page</title>
+    <link rel="stylesheet" href="stephen.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+      body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(rgba(255,255,255,0.60), rgba(255,255,255,0.60)), url('Images/IMG_2161.JPG') no-repeat center center fixed;
+        background-size: cover;
+        color: #222;
+      }
+      .header {
+        display: flex;
+        align-items: center;
+        background: linear-gradient(90deg, #256029 60%, #388e3c 100%);
+        color: #fff;
+        padding: 20px 40px;
+        justify-content: space-between;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        border-bottom-left-radius: 18px;
+        border-bottom-right-radius: 18px;
+      }
+      .profile {
+        display: flex;
+        align-items: center;
+      }
+      .profile img {
+        width: 72px;
+        height: 72px;
+        border-radius: 16px;
+        margin-right: 18px;
+        border: 3px solid #fff;
+        object-fit: cover;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      }
+      .menu {
+        display: flex;
+        gap: 25px;
+      }
+      .menu a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 10px 22px;
+        border-radius: 6px;
+        transition: background 0.2s, color 0.2s;
+        letter-spacing: 0.5px;
+        font-size: 1.08em;
+      }
+      .menu a:hover {
+        background: #fff;
+        color: #256029;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      }
+      .nav-dropdown {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      .nav-dropdown-content {
+        display: none;
+        position: absolute;
+        background: #fff;
+        min-width: 200px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        border-radius: 8px;
+        overflow: hidden;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 10px;
+      }
+      .nav-dropdown-content a {
+        color: #333;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        transition: background 0.2s;
+        border-bottom: 1px solid #f0f0f0;
+        font-weight: 500;
+        font-size: 0.95em;
+      }
+      .nav-dropdown-content a:last-child {
+        border-bottom: none;
+      }
+      .nav-dropdown-content a:hover {
+        background: #256029;
+        color: #fff;
+      }
+      .nav-dropdown:hover .nav-dropdown-content {
+        display: block;
+      }
+      .nav-dropdown::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid #fff;
+        display: none;
+      }
+      .nav-dropdown:hover::after {
+        display: block;
+      }
+      .dropdown-indicator {
+        margin-left: 5px;
+        font-size: 0.8em;
+        transition: transform 0.2s;
+      }
+      .nav-dropdown:hover .dropdown-indicator {
+        transform: rotate(180deg);
+      }
+      .slider-container {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        min-height: 400px;
+        margin: 0;
+        border-radius: 0;
+        overflow: hidden;
+        box-shadow: none;
+        background: #111;
+      }
+      .slider-images {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        background: #111;
+      }
+      .slider-images img {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 1.2s cubic-bezier(0.4,0,0.2,1);
+      }
+      .slider-images img.active {
+        opacity: 0.7;
+      }
+      .slider-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        color: #fff;
+        /* background: rgba(34, 87, 34, 0.7); */
+        padding: 0;
+        border-radius: 0;
+        font-size: 2rem;
+        font-weight: bold;
+        text-align: center;
+        box-shadow: none;
+        width: 80%;
+        max-width: 800px;
+        letter-spacing: 1px;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.35), 0 4px 16px rgba(0,0,0,0.25);
+      }
+      .main-content {
+        background: none;
+        text-align: center;
+        padding: 40px 0 0 0;
+        border-radius: 0;
+        margin: 30px auto 0 auto;
+        max-width: 1200px;
+        box-shadow: none;
+      }
+      .main-content h1 {
+        font-size: 2.2rem;
+        color: #256029;
+        margin-bottom: 18px;
+        letter-spacing: 1px;
+      }
+      .main-content p {
+        font-size: 1.15rem;
+        color: #444;
+        max-width: 800px;
+        margin: 0 auto 24px auto;
+        line-height: 1.7;
+      }
+      .btn-primary {
+        background: #256029 !important;
+        color: #fff !important;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 28px;
+        font-size: 1.1em;
+        font-weight: 600;
+        margin-bottom: 30px;
+        transition: background 0.2s, color 0.2s;
+      }
+      .btn-primary:hover {
+        background: #388e3c !important;
+        color: #fff !important;
+      }
+      .container {
+        margin: 40px auto 0 auto;
+        max-width: 1100px;
+      }
+      .projects {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        flex-wrap: wrap;
+        margin-top: 24px;
+      }
+      .project-card {
+        width: 260px;
+        background: rgba(255,255,255,0.18);
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: none;
+        transition: transform 0.2s;
+        border: none;
+      }
+      .project-card:hover {
+        transform: translateY(-8px) scale(1.04);
+        box-shadow: 0 6px 24px rgba(34,87,34,0.13);
+        border-color: #256029;
+      }
+      .project-card img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+      }
+      .project-title {
+        font-size: 1.18em;
+        margin: 18px 0;
+        color: #256029 !important;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .publication-list { 
+        list-style: none; 
+        padding: 0; 
+        max-width: 900px; 
+        margin: 0 auto 40px auto;
+      }
+      .publication-item { 
+        background: rgba(255,255,255,0.18);
+        margin-bottom: 24px;
+        padding: 24px 32px;
+        border-radius: 10px;
+        box-shadow: none;
+        border-left: none;
+        text-align: left;
+      }
+      .pub-title { 
+        font-weight: bold; 
+        font-size: 1.15em; 
+        color: #256029;
+      }
+      .pub-authors, .pub-journal, .pub-year { 
+        color: #555; 
+        font-size: 1em; 
+        margin-top: 4px;
+      }
+      .pub-link { 
+        margin-top: 10px;
+        display: inline-block;
+        background: #256029;
+        color: #fff !important;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 8px 20px;
+        border-radius: 5px;
+        transition: background 0.2s, color 0.2s;
+      }
+      .pub-link:hover { 
+        text-decoration: none;
+        background: #388e3c;
+        color: #fff !important;
+      }
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 28px;
+        margin: 40px 0 30px 0;
+      }
+      .social-icons a {
+        color: #256029;
+        font-size: 2.2rem;
+        transition: color 0.2s, transform 0.2s;
+      }
+      .social-icons a:hover {
+        color: #1a73e8;
+        transform: scale(1.15);
+      }
+      @media (max-width: 900px) {
+        .projects {
+          flex-direction: column;
+          align-items: center;
+          gap: 24px;
+        }
+        .slider-container {
+          width: 100vw;
+          height: 60vh;
+          min-height: 300px;
+        }
+        .slider-images, .slider-images img {
+          width: 100vw;
+          height: 60vh;
+        }
+        .main-content, .container {
+          max-width: 98vw;
+          margin: 10px auto;
+        }
+        .publication-item {
+          padding: 18px 10px;
+        }
+      }
+      .main-content h1, .main-content p, .project-title, .pub-title, .pub-authors, .pub-journal, .pub-year {
+        color: #222;
+        text-shadow: 0 2px 8px rgba(255,255,255,0.18), 0 4px 16px rgba(0,0,0,0.12);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="profile">
+        <img src="images/IMG_2259.JPG" alt="Profile Picture" />
+        <span>Stephen Dhoal Mathew Wanbang</span>
+      </div>
+      <nav class="menu">
+        <a href="Sample1.html">Home</a>
+        <a href="about.html">About</a>
+        <div class="nav-dropdown">
+          <a href="projects.html">Projects <span class="dropdown-indicator"><i class="fas fa-caret-down"></i></span></a>
+          <div class="nav-dropdown-content">
+            <a href="srhr.html">SRHR</a>
+            <a href="peace-building.html">Peace Building</a>
+            <a href="advocacy.html">Advocacy</a>
+          </div>
+        </div>
+        <a href="publications.html">Publications</a>
+      </nav>
+    </div>
+    <div class="slider-container">
+      <div class="slider-images">
+        <img src="images/IMG-20240307-WA0074.jpg" class="active" alt="Slider 1" />
+        <img src="images/20230817_105957.jpg" alt="Slider 2" />
+        <img src="Images/IMG_2161.JPG" alt="Slider 3" />
+      </div>
+      <div class="slider-text">
+        Youth in Action: Empowering Youth for Peace Building
+      </div>
+    </div>
+  </div>
+  <div class="main-content" style="margin-top: 0; padding-top: 60px;">
+      <h1>About Me</h1>
+      <p>
+        I am a refugee rights, sexual reproductive health and rights (SRHR) advocate, refugee researcher and a peace builder from South Sudan living in Uganda as a refugee. My advocacy, research and peace building experience in displaced settings spans to five years.
+
+Having experienced displacement myself, my passion in advocating for my fellow refugee rights stems from my own experiences of displacement. I am currently a co-founder and program coordinator at Youth Action for Community Transformation (YACOT) and served with many international organizations like Windle International Uganda, Resettlement Support Center (RSC Africa), IDinsight, Center for Evaluation and Development Uganda (C4ED) and Give Directly in refugee camps from Uganda.
+      </p>
+      <a href="about.html" class="btn btn-primary">Learn More</a>
+      
+    <div class="container">
+        <link rel="stylesheet" href="stephen.css" />
+        <h1>My Projects</h1>
+        <div class="projects">
+            <a href="srhr.html">
+                <div class="project-card">
+                    <img src="images/IMG_2094.JPG" alt="SRHR Programs">
+                    <div class="project-title">SRHR</div>
+                </div>
+            </a>
+            <a href="peace-building.html">
+                <div class="project-card">
+                    <img src="images/IMG_2122.JPG" alt="Peace Building Programs">
+                    <div class="project-title">Peace Building</div>
+                </div>
+            </a>
+            <a href="advocacy.html">
+                <div class="project-card">
+                    <img src="images/IMG_2195.JPG" alt="Advocacy Programs">
+                    <div class="project-title">Advocacy</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+      <h1>Publications</h1>
+      <ul class="publication-list">
+        <li class="publication-item">
+            <div class="pub-title">The Role of Refugee Youth in Peace Building: A Case Study of Rhino Camp Refugee Settlement</div>
+            <div class="pub-authors">Uganda hosts one of the largest refugee populations in Africa, with significant numbers of youth residing in settlements like Rhino Camp in the West Nile sub-region (KRC Uganda, 2025). These young people, having often experienced conflict and displacement, represent both a vulnerable demographic and a significant, largely untapped resource for peacebuilding. While exact figures fluctuate due to new arrivals and verification exercises, as of late 2024 and early 2025, UNHCR data and related reports indicate Uganda hosts over 1.7 million refugees and asylum seekers in total. The international community has increasingly recognized the crucial role of young people in maintaining and promoting peace and security through frameworks like UN Security Council Resolution 2250 (2015) and subsequent resolutions (2419 and 2535), which collectively form the Youth, Peace and Security (YPS) Agenda. This agenda calls for the meaningful participation of youth in all phases of peace processes, from conflict prevention and resolution to post-conflict reconstruction and reconciliation. </div>
+            <a class="pub-link" href="https://example.com/publication1" target="_blank">Read more</a>
+        </li>
+        <li class="publication-item">
+            <div class="pub-title">Community Organization Advances SRHR for Adolescents in Rhino Camp Refugee Settlement</div>
+            <div class="pub-authors">Community transformation centers the work and leadership of Youth Action for Community Transformation (YACOT), a community-based organization advancing sexual and reproductive health and rights (SRHR) in northwest Uganda. YACOT is based in the Odobu Zone of Rhino Camp Refugee Settlement, serving refugees (mostly from neighboring South Sudan) and members of the host community. </div>
+            <a class="pub-link" href="https://iawg.net/resources/community-organization-advances-srhr-for-adolescents-in-rhino-camp-refugee-settlement" target="_blank">Read more</a>
+        </li>
+        <!-- Add more publication items as needed -->
+    </ul>
+    
+    <div class="social-icons">
+      <a
+        href="https://www.linkedin.com/in/stephen-dhoal-mathew-wanbang-09256721b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+        target="_blank"
+        title="LinkedIn"
+        ><i class="fab fa-linkedin"></i
+      ></a>
+      <a
+        href="https://www.facebook.com/dhoalwanbang.nyater"
+        target="_blank"
+        title="Facebook"
+        ><i class="fab fa-facebook"></i
+      ></a>
+      <a href="https://x.com/dhoal_mathew?t=SMiO-c_a8TMGyn0jbkSQoA&s=09" target="_blank" title="X"
+        ><i class="fab fa-x-twitter"></i
+      ></a>
+      <a
+        href="https://www.instagram.com/stephendhoal18?igsh=YzljYTk1ODg3Zg=="
+        target="_blank"
+        title="Instagram"
+        ><i class="fab fa-instagram"></i
+      ></a>
+    </div>
+    <script>
+      // Simple slider JS
+      const images = document.querySelectorAll(".slider-images img");
+      let current = 0;
+      setInterval(() => {
+        images[current].classList.remove("active");
+        current = (current + 1) % images.length;
+        images[current].classList.add("active");
+      }, 3500);
+    </script>
+    <footer style="background: #256029; color: #fff; text-align: center; padding: 18px 0; font-size: 1.05em; border-top-left-radius: 12px; border-top-right-radius: 12px; margin-top: 40px; letter-spacing: 0.5px;">
+      &copy; 2025 Stephen Dhoal Mathew Wanbang. All rights reserved.
+    </footer>
+  </body>
+</html>

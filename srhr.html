@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SRHR - Stephen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+        background: linear-gradient(
+            rgba(36, 87, 34, 0.55),
+            rgba(36, 87, 34, 0.55)
+          ),
+          url("Images/IMG_2161.JPG") no-repeat center center fixed;
+        background-size: cover;
+        color: #222;
+        margin: 0;
+        padding: 0;
+      }
+      .header {
+        display: flex;
+        align-items: center;
+        background: linear-gradient(90deg, #256029 60%, #388e3c 100%);
+        color: #fff;
+        padding: 20px 40px;
+        justify-content: space-between;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        border-bottom-left-radius: 18px;
+        border-bottom-right-radius: 18px;
+      }
+      .profile-header {
+        display: flex;
+        align-items: center;
+      }
+      .profile-header img {
+        width: 72px;
+        height: 72px;
+        border-radius: 16px;
+        margin-right: 18px;
+        border: 3px solid #fff;
+        object-fit: cover;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .menu {
+        display: flex;
+        gap: 25px;
+      }
+      .menu a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 10px 22px;
+        border-radius: 6px;
+        transition: background 0.2s, color 0.2s;
+        letter-spacing: 0.5px;
+        font-size: 1.08em;
+      }
+      .menu a:hover {
+        background: #fff;
+        color: #256029;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+      .nav-dropdown {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      .nav-dropdown-content {
+        display: none;
+        position: absolute;
+        background: #fff;
+        min-width: 200px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        border-radius: 8px;
+        overflow: hidden;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 10px;
+      }
+      .nav-dropdown-content a {
+        color: #333;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        transition: background 0.2s;
+        border-bottom: 1px solid #f0f0f0;
+        font-weight: 500;
+        font-size: 0.95em;
+      }
+      .nav-dropdown-content a:last-child {
+        border-bottom: none;
+      }
+      .nav-dropdown-content a:hover {
+        background: #256029;
+        color: #fff;
+      }
+      .nav-dropdown:hover .nav-dropdown-content {
+        display: block;
+      }
+      .nav-dropdown::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid #fff;
+        display: none;
+      }
+      .nav-dropdown:hover::after {
+        display: block;
+      }
+      .dropdown-indicator {
+        margin-left: 5px;
+        font-size: 0.8em;
+        transition: transform 0.2s;
+      }
+      .nav-dropdown:hover .dropdown-indicator {
+        transform: rotate(180deg);
+      }
+      .srhr-main {
+        max-width: 1000px;
+        margin: 40px auto 0 auto;
+        padding: 48px 32px 32px 32px;
+      }
+      .srhr-main h1 {
+        font-size: 2.5rem;
+        color: #fff;
+        margin-bottom: 30px;
+        letter-spacing: 1px;
+        text-align: center;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35),
+          0 4px 16px rgba(0, 0, 0, 0.25);
+      }
+      .srhr-content {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 16px;
+        padding: 40px;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+      .srhr-content h2 {
+        color: #256029;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        border-bottom: 3px solid #256029;
+        padding-bottom: 10px;
+      }
+      .srhr-content h3 {
+        color: #388e3c;
+        font-size: 1.4rem;
+        margin: 25px 0 15px 0;
+      }
+      .srhr-content p {
+        line-height: 1.8;
+        color: #333;
+        font-size: 1.1rem;
+        margin-bottom: 18px;
+      }
+      .srhr-content ul {
+        margin-bottom: 20px;
+        padding-left: 25px;
+      }
+      .srhr-content li {
+        line-height: 1.8;
+        color: #333;
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+      }
+      .srhr-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+        margin: 30px 0;
+      }
+      .stat-card {
+        background: linear-gradient(135deg, #256029, #388e3c);
+        color: #fff;
+        padding: 25px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .stat-label {
+        font-size: 1.1rem;
+        opacity: 0.9;
+      }
+      .srhr-programs {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 16px;
+        padding: 40px;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+      .program-item {
+        border-left: 4px solid #256029;
+        padding-left: 20px;
+        margin-bottom: 25px;
+      }
+      .program-item h4 {
+        color: #256029;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+      }
+      .srhr-social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 28px;
+        margin: 32px 0 0 0;
+      }
+      .srhr-social-icons a {
+        color: #fff;
+        font-size: 2.2rem;
+        transition: color 0.2s, transform 0.2s;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+      }
+      .srhr-social-icons a:hover {
+        color: #1a73e8;
+        transform: scale(1.15);
+      }
+      @media (max-width: 900px) {
+        .srhr-main {
+          padding: 24px 8px 24px 8px;
+        }
+        .srhr-content, .srhr-programs {
+          padding: 25px;
+        }
+        .srhr-main h1 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="profile-header">
+        <img src="Images/IMG_2259.JPG" alt="Profile Picture" />
+        <span>Stephen Dhoal Mathew Wanbang</span>
+      </div>
+      <nav class="menu">
+        <a href="Sample1.html">Home</a>
+        <a href="about.html">About</a>
+                  <div class="nav-dropdown">
+            <a href="projects.html">Projects <span class="dropdown-indicator"><i class="fas fa-caret-down"></i></span></a>
+            <div class="nav-dropdown-content">
+              <a href="srhr.html">SRHR</a>
+              <a href="peace-building.html">Peace Building</a>
+              <a href="advocacy.html">Advocacy</a>
+            </div>
+          </div>
+        <a href="publications.html">Publications</a>
+      </nav>
+    </div>
+    <div class="srhr-main">
+      <h1>Sexual Reproductive Health and Rights (SRHR)</h1>
+      
+      <div class="srhr-content">
+        <h2>My SRHR Advocacy Journey</h2>
+        <p>
+          As a refugee rights advocate with lived experience of displacement, I have dedicated myself to advancing Sexual Reproductive Health and Rights (SRHR) for refugee communities in Uganda. My work focuses on ensuring that displaced populations have access to comprehensive sexual and reproductive health services, education, and rights protection.
+        </p>
+        
+        <h3>Key Areas of Focus</h3>
+        <ul>
+          <li><strong>Access to Healthcare:</strong> Advocating for improved access to sexual and reproductive health services in refugee settlements</li>
+          <li><strong>Education and Awareness:</strong> Conducting comprehensive SRHR education programs for refugee youth and adults</li>
+          <li><strong>Rights Protection:</strong> Working to protect the reproductive rights of refugee women and girls</li>
+          <li><strong>Policy Advocacy:</strong> Engaging with stakeholders to influence policies that affect refugee SRHR</li>
+          <li><strong>Community Engagement:</strong> Building community support and understanding around SRHR issues</li>
+        </ul>
+      </div>
+
+             <div class="srhr-stats">
+         <div class="stat-card">
+           <div class="stat-number">3000+</div>
+           <div class="stat-label">Learners & Community Members Reached</div>
+         </div>
+         <div class="stat-card">
+           <div class="stat-number">169</div>
+           <div class="stat-label">Adolescents & Youth Engaged</div>
+         </div>
+         <div class="stat-card">
+           <div class="stat-number">101</div>
+           <div class="stat-label">Sanitary Pads Distributed</div>
+         </div>
+         <div class="stat-card">
+           <div class="stat-number">10</div>
+           <div class="stat-label">Programs Implemented</div>
+         </div>
+       </div>
+
+             <div class="srhr-programs" id="programs">
+         <h2>Recent SRHR Programs and Initiatives (2024-2025)</h2>
+         
+         <div class="program-item">
+           <h4>School and Community Outreach Programs</h4>
+           <p>
+             As co-founder at Youth Action for Community Transformation (YACOT), I implemented three school and one community outreach programs that significantly impacted lives within the Rhino Camp Refugee Settlement. These programs reached over 3,000 learners and community members, covering critical topics on STIs/STDs, family planning methods, and providing STIs/STDs testing and counseling services.
+           </p>
+         </div>
+
+         <div class="program-item">
+           <h4>Youth Talk Programs</h4>
+           <p>
+             Conducted four youth talk programs that engaged 169 adolescents and youth, fostering meaningful dialogue on reproductive rights, sexual health awareness, and personal development. These sessions created safe spaces for young people to discuss sensitive topics and access accurate information.
+           </p>
+         </div>
+
+         <div class="program-item">
+           <h4>Menstrual Health Management</h4>
+           <p>
+             Led two comprehensive menstrual health management sessions and distributed 101 reusable sanitary pads to adolescent girls, ensuring dignity and continued access to education. This initiative addressed a critical gap in menstrual health support for refugee girls.
+           </p>
+         </div>
+
+         <div class="program-item">
+           <h4>Comprehensive SRHR Education</h4>
+           <p>
+             Developed and implemented comprehensive sexual and reproductive health education programs targeting refugee youth and adults in Rhino Camp Refugee Settlement. These programs cover topics including family planning, maternal health, gender-based violence prevention, and reproductive rights.
+           </p>
+         </div>
+
+         <div class="program-item">
+           <h4>Youth-Friendly Health Services</h4>
+           <p>
+             Established youth-friendly health service initiatives that provide safe, confidential, and accessible sexual and reproductive health services to young refugees. This includes counseling, contraceptives, and referrals to specialized care.
+           </p>
+         </div>
+
+         <div class="program-item">
+           <h4>Community Awareness Campaigns</h4>
+           <p>
+             Led community-wide awareness campaigns that challenge harmful cultural practices and promote positive attitudes towards sexual and reproductive health. These campaigns use culturally appropriate messaging and engage community leaders.
+           </p>
+         </div>
+
+         <div class="program-item">
+           <h4>Policy Advocacy and Stakeholder Engagement</h4>
+           <p>
+             Engaged with government officials, UN agencies, and NGOs to advocate for policies that improve SRHR access for refugees. This includes participation in policy dialogues and submission of recommendations.
+           </p>
+         </div>
+       </div>
+
+             <div class="srhr-content" id="impact">
+         <h2>Recent Impact and Achievements (2024-2025)</h2>
+         <p>
+           As co-founder at Youth Action for Community Transformation (YACOT), my recent SRHR initiatives have made significant impact within the Rhino Camp Refugee Settlement. Through targeted programs, I have directly reached over 3,000 learners and community members, with specific achievements including:
+         </p>
+         <ul>
+           <li><strong>Comprehensive Outreach:</strong> Implemented three school and one community outreach programs reaching 3,000+ individuals</li>
+           <li><strong>Youth Engagement:</strong> Conducted four youth talk programs engaging 169 adolescents and youth in reproductive rights dialogue</li>
+           <li><strong>Menstrual Health Support:</strong> Led two menstrual health management sessions and distributed 101 reusable sanitary pads</li>
+           <li><strong>Health Services:</strong> Provided STIs/STDs testing and counseling services to community members</li>
+           <li><strong>Education:</strong> Covered critical topics on STIs/STDs and family planning methods</li>
+           <li><strong>Dignity and Access:</strong> Ensured adolescent girls maintain dignity and continued access to education</li>
+         </ul>
+
+         <h3>Partnerships and Collaborations</h3>
+         <p>
+           My SRHR work has been supported through partnerships with organizations including Columbia Mailman School of Public Health and various local health facilities. These collaborations have been essential in expanding the reach and impact of SRHR programs, particularly in addressing the unique needs of refugee communities.
+         </p>
+       </div>
+
+      <div class="srhr-social-icons">
+        <a
+          href="https://www.instagram.com/stephendhoal18?igsh=YzljYTk1ODg3Zg=="
+          target="_blank"
+          title="Instagram"
+          ><i class="fab fa-instagram"></i
+        ></a>
+        <a href="https://x.com/dhoal_mathew?t=SMiO-c_a8TMGyn0jbkSQoA&s=09" target="_blank" title="X"
+          ><i class="fab fa-x-twitter"></i
+        ></a>
+        <a
+          href="https://www.facebook.com/dhoalwanbang.nyater"
+          target="_blank"
+          title="Facebook"
+          ><i class="fab fa-facebook"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/in/stephen-dhoal-mathew-wanbang-09256721b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+          target="_blank"
+          title="LinkedIn"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+      </div>
+    </div>
+    <footer
+      style="
+        background: #256029;
+        color: #fff;
+        text-align: center;
+        padding: 18px 0;
+        font-size: 1.05em;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        margin-top: 40px;
+        letter-spacing: 0.5px;
+      "
+    >
+      &copy; 2024 Stephen Dhoal Mathew Wanbang. All rights reserved.
+    </footer>
+  </body>
+</html> 

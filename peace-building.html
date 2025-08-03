@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Peace Building - Stephen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+        background: linear-gradient(
+            rgba(36, 87, 34, 0.55),
+            rgba(36, 87, 34, 0.55)
+          ),
+          url("Images/IMG_2161.JPG") no-repeat center center fixed;
+        background-size: cover;
+        color: #222;
+        margin: 0;
+        padding: 0;
+      }
+      .header {
+        display: flex;
+        align-items: center;
+        background: linear-gradient(90deg, #256029 60%, #388e3c 100%);
+        color: #fff;
+        padding: 20px 40px;
+        justify-content: space-between;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        border-bottom-left-radius: 18px;
+        border-bottom-right-radius: 18px;
+      }
+      .profile-header {
+        display: flex;
+        align-items: center;
+      }
+      .profile-header img {
+        width: 72px;
+        height: 72px;
+        border-radius: 16px;
+        margin-right: 18px;
+        border: 3px solid #fff;
+        object-fit: cover;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .menu {
+        display: flex;
+        gap: 25px;
+      }
+      .menu a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 10px 22px;
+        border-radius: 6px;
+        transition: background 0.2s, color 0.2s;
+        letter-spacing: 0.5px;
+        font-size: 1.08em;
+      }
+      .menu a:hover {
+        background: #fff;
+        color: #256029;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+      .nav-dropdown {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      .nav-dropdown-content {
+        display: none;
+        position: absolute;
+        background: #fff;
+        min-width: 200px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        border-radius: 8px;
+        overflow: hidden;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 10px;
+      }
+      .nav-dropdown-content a {
+        color: #333;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        transition: background 0.2s;
+        border-bottom: 1px solid #f0f0f0;
+        font-weight: 500;
+        font-size: 0.95em;
+      }
+      .nav-dropdown-content a:last-child {
+        border-bottom: none;
+      }
+      .nav-dropdown-content a:hover {
+        background: #256029;
+        color: #fff;
+      }
+      .nav-dropdown:hover .nav-dropdown-content {
+        display: block;
+      }
+      .nav-dropdown::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid #fff;
+        display: none;
+      }
+      .nav-dropdown:hover::after {
+        display: block;
+      }
+      .dropdown-indicator {
+        margin-left: 5px;
+        font-size: 0.8em;
+        transition: transform 0.2s;
+      }
+      .nav-dropdown:hover .dropdown-indicator {
+        transform: rotate(180deg);
+      }
+      .peace-main {
+        max-width: 1000px;
+        margin: 40px auto 0 auto;
+        padding: 48px 32px 32px 32px;
+      }
+      .peace-main h1 {
+        font-size: 2.5rem;
+        color: #fff;
+        margin-bottom: 30px;
+        letter-spacing: 1px;
+        text-align: center;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35),
+          0 4px 16px rgba(0, 0, 0, 0.25);
+      }
+      .peace-content {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 16px;
+        padding: 40px;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+      .peace-content h2 {
+        color: #256029;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        border-bottom: 3px solid #256029;
+        padding-bottom: 10px;
+      }
+      .peace-content h3 {
+        color: #388e3c;
+        font-size: 1.4rem;
+        margin: 25px 0 15px 0;
+      }
+      .peace-content p {
+        line-height: 1.8;
+        color: #333;
+        font-size: 1.1rem;
+        margin-bottom: 18px;
+      }
+      .peace-content ul {
+        margin-bottom: 20px;
+        padding-left: 25px;
+      }
+      .peace-content li {
+        line-height: 1.8;
+        color: #333;
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+      }
+      .certifications {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin: 30px 0;
+      }
+      .cert-card {
+        background: linear-gradient(135deg, #256029, #388e3c);
+        color: #fff;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      .cert-card h4 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+        padding-bottom: 10px;
+      }
+      .peace-programs {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 16px;
+        padding: 40px;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+      .program-item {
+        border-left: 4px solid #256029;
+        padding-left: 20px;
+        margin-bottom: 25px;
+      }
+      .program-item h4 {
+        color: #256029;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+      }
+      .peace-social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 28px;
+        margin: 32px 0 0 0;
+      }
+      .peace-social-icons a {
+        color: #fff;
+        font-size: 2.2rem;
+        transition: color 0.2s, transform 0.2s;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+      }
+      .peace-social-icons a:hover {
+        color: #1a73e8;
+        transform: scale(1.15);
+      }
+      @media (max-width: 900px) {
+        .peace-main {
+          padding: 24px 8px 24px 8px;
+        }
+        .peace-content, .peace-programs {
+          padding: 25px;
+        }
+        .peace-main h1 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="profile-header">
+        <img src="Images/IMG_2259.JPG" alt="Profile Picture" />
+        <span>Stephen Dhoal Mathew Wanbang</span>
+      </div>
+      <nav class="menu">
+        <a href="Sample1.html">Home</a>
+        <a href="about.html">About</a>
+                  <div class="nav-dropdown">
+            <a href="projects.html">Projects <span class="dropdown-indicator"><i class="fas fa-caret-down"></i></span></a>
+            <div class="nav-dropdown-content">
+              <a href="srhr.html">SRHR</a>
+              <a href="peace-building.html">Peace Building</a>
+              <a href="advocacy.html">Advocacy</a>
+            </div>
+          </div>
+        <a href="publications.html">Publications</a>
+      </nav>
+    </div>
+    <div class="peace-main">
+      <h1>Peace Building</h1>
+      
+      <div class="peace-content">
+        <h2>My Peace Building Journey</h2>
+        <p>
+          As a certified peace builder and refugee from South Sudan, I have dedicated myself to fostering peace, reconciliation, and conflict resolution in displaced communities. My work focuses on building bridges between refugee and host communities, promoting dialogue, and developing sustainable peace initiatives.
+        </p>
+        
+        <h3>Core Peace Building Principles</h3>
+        <ul>
+          <li><strong>Inclusive Dialogue:</strong> Creating safe spaces for open communication between different community groups</li>
+          <li><strong>Conflict Resolution:</strong> Implementing mediation and negotiation techniques to resolve disputes</li>
+          <li><strong>Community Reconciliation:</strong> Facilitating healing and reconciliation processes</li>
+          <li><strong>Capacity Building:</strong> Training community members in peace building skills</li>
+          <li><strong>Sustainable Peace:</strong> Developing long-term strategies for maintaining peace</li>
+        </ul>
+      </div>
+
+      <div class="certifications" id="certifications">
+        <div class="cert-card">
+          <h4>ACCORD Certification</h4>
+          <p>
+            Certified peace builder trained by the African Centre for the Constructive Resolution of Disputes (ACCORD) in conflict management and resolution, mediation, and dialogue facilitation.
+          </p>
+        </div>
+        <div class="cert-card">
+          <h4>IPHRD-Africa Training</h4>
+          <p>
+            Trained by International Center for Peace, Human Rights and Development (IPHRD-Africa) in advanced peace building methodologies and human rights-based approaches to conflict resolution.
+          </p>
+        </div>
+        <div class="cert-card">
+          <h4>Kuza Amani Fellowship</h4>
+          <p>
+            Alumni of the Kuza Amani Fellowship, a prestigious program that equips peace builders with innovative approaches to community-based conflict transformation.
+          </p>
+        </div>
+        <div class="cert-card">
+          <h4>Youth in Action Fellowship</h4>
+          <p>
+            Graduate of the Youth in Action Fellowship, focusing on youth-led peace building initiatives and community mobilization for sustainable peace.
+          </p>
+        </div>
+      </div>
+
+      <div class="peace-programs" id="programs">
+        <h2>Peace Building Programs and Initiatives</h2>
+        
+        <div class="program-item">
+          <h4>Community Dialogue Forums</h4>
+          <p>
+            Established regular community dialogue forums that bring together refugee and host community members to discuss issues, share perspectives, and work towards mutual understanding. These forums have become platforms for addressing tensions and building relationships.
+          </p>
+        </div>
+
+        <div class="program-item">
+          <h4>Conflict Mediation Services</h4>
+          <p>
+            Provided mediation services for conflicts within refugee communities and between refugee and host communities. This includes family disputes, resource conflicts, and inter-community tensions.
+          </p>
+        </div>
+
+        <div class="program-item">
+          <h4>Peace Education Programs</h4>
+          <p>
+            Developed and implemented peace education programs in schools and community centers, teaching conflict resolution skills, tolerance, and peaceful coexistence to children and youth.
+          </p>
+        </div>
+
+        <div class="program-item">
+          <h4>Reconciliation Workshops</h4>
+          <p>
+            Conducted reconciliation workshops that help communities heal from past conflicts and trauma, using culturally appropriate methods and traditional reconciliation practices.
+          </p>
+        </div>
+
+        <div class="program-item">
+          <h4>Youth Peace Ambassadors</h4>
+          <p>
+            Trained and mentored youth peace ambassadors who serve as role models and peace advocates within their communities, spreading messages of tolerance and non-violence.
+          </p>
+        </div>
+
+        <div class="program-item">
+          <h4>Inter-Community Projects</h4>
+          <p>
+            Facilitated collaborative projects between refugee and host communities, such as shared farming initiatives, cultural exchange programs, and joint community development activities.
+          </p>
+        </div>
+      </div>
+
+      <div class="peace-content">
+        <h2>Impact and Achievements</h2>
+        <p>
+          Through my peace building work, I have successfully facilitated numerous conflict resolutions and contributed to improved relations between refugee and host communities. Key achievements include:
+        </p>
+        <ul>
+          <li>Resolved over 50 community conflicts through mediation and dialogue</li>
+          <li>Trained 200+ community members in peace building and conflict resolution skills</li>
+          <li>Established 10 community dialogue forums across refugee settlements</li>
+          <li>Mentored 25 youth peace ambassadors who continue to promote peace in their communities</li>
+          <li>Facilitated reconciliation processes for communities affected by inter-ethnic tensions</li>
+        </ul>
+
+        <h3>Recognition and Representation</h3>
+        <p>
+          In 2023, I was selected to represent refugee youth by the United Nations Human Rights Office of the High Commissioner for East and Horn of Africa in a consultation meeting on fostering youth participation in governance, peace and security in the context of human rights 75. This recognition highlights the importance of including refugee voices in peace building and governance processes.
+        </p>
+
+        <h3>Future Vision</h3>
+        <p>
+          My vision is to expand peace building initiatives to reach more refugee communities across Uganda and the region, while developing innovative approaches that address the unique challenges faced by displaced populations. I believe that sustainable peace can only be achieved through inclusive, community-driven processes that respect the dignity and rights of all individuals.
+        </p>
+      </div>
+
+      <div class="peace-social-icons">
+        <a
+          href="https://www.instagram.com/stephendhoal18?igsh=YzljYTk1ODg3Zg=="
+          target="_blank"
+          title="Instagram"
+          ><i class="fab fa-instagram"></i
+        ></a>
+        <a href="https://x.com/dhoal_mathew?t=SMiO-c_a8TMGyn0jbkSQoA&s=09" target="_blank" title="X"
+          ><i class="fab fa-x-twitter"></i
+        ></a>
+        <a
+          href="https://www.facebook.com/dhoalwanbang.nyater"
+          target="_blank"
+          title="Facebook"
+          ><i class="fab fa-facebook"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/in/stephen-dhoal-mathew-wanbang-09256721b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+          target="_blank"
+          title="LinkedIn"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+      </div>
+    </div>
+    <footer
+      style="
+        background: #256029;
+        color: #fff;
+        text-align: center;
+        padding: 18px 0;
+        font-size: 1.05em;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        margin-top: 40px;
+        letter-spacing: 0.5px;
+      "
+    >
+      &copy; 2024 Stephen Dhoal Mathew Wanbang. All rights reserved.
+    </footer>
+  </body>
+</html> 
