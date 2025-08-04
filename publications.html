@@ -49,6 +49,10 @@
         object-fit: cover;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       }
+      .profile-header span {
+        font-weight: 600;
+        font-size: 1.1em;
+      }
       .menu {
         display: flex;
         gap: 25px;
@@ -129,6 +133,15 @@
       .nav-dropdown:hover .dropdown-indicator {
         transform: rotate(180deg);
       }
+      .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1.5em;
+        cursor: pointer;
+        padding: 5px;
+      }
       .publications-main {
         max-width: 1000px;
         margin: 40px auto 0 auto;
@@ -181,12 +194,156 @@
         text-decoration: underline;
         color: #256029;
       }
-      @media (max-width: 900px) {
+      
+      /* Responsive Design - Tablet */
+      @media (max-width: 1024px) {
+        .header {
+          padding: 15px 20px;
+        }
+        .profile-header img {
+          width: 60px;
+          height: 60px;
+          margin-right: 15px;
+        }
+        .profile-header span {
+          font-size: 1em;
+        }
+        .menu {
+          gap: 15px;
+        }
+        .menu a {
+          padding: 8px 16px;
+          font-size: 1em;
+        }
         .publications-main {
-          padding: 24px 8px 24px 8px;
+          padding: 40px 24px 24px 24px;
+        }
+        .publications-main h1 {
+          font-size: 2rem;
         }
         .publication-item {
-          padding: 18px 10px;
+          padding: 20px 24px;
+        }
+        .pub-title {
+          font-size: 1.1em;
+        }
+      }
+      
+      /* Responsive Design - Mobile Large */
+      @media (max-width: 768px) {
+        .header {
+          flex-direction: column;
+          padding: 15px 20px;
+          gap: 15px;
+        }
+        .profile-header {
+          justify-content: center;
+        }
+        .profile-header img {
+          width: 50px;
+          height: 50px;
+          margin-right: 12px;
+        }
+        .profile-header span {
+          font-size: 0.9em;
+        }
+        .menu {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          gap: 10px;
+        }
+        .menu.active {
+          display: flex;
+        }
+        .menu a {
+          text-align: center;
+          padding: 12px;
+          border-radius: 8px;
+          background: rgba(255,255,255,0.1);
+        }
+        .mobile-menu-toggle {
+          display: block;
+          position: absolute;
+          top: 15px;
+          right: 20px;
+        }
+        .nav-dropdown-content {
+          position: static;
+          transform: none;
+          margin-top: 0;
+          box-shadow: none;
+          background: rgba(255,255,255,0.1);
+          border-radius: 8px;
+          margin: 10px 0;
+        }
+        .nav-dropdown-content a {
+          color: #fff;
+          text-align: center;
+        }
+        .nav-dropdown-content a:hover {
+          background: rgba(255,255,255,0.2);
+        }
+        .publications-main {
+          padding: 30px 20px 20px 20px;
+          margin: 20px auto 0 auto;
+        }
+        .publications-main h1 {
+          font-size: 1.8rem;
+        }
+        .publication-item {
+          padding: 18px 15px;
+          margin-bottom: 20px;
+        }
+        .pub-title {
+          font-size: 1.05em;
+        }
+        .pub-authors, .pub-journal, .pub-year {
+          font-size: 0.95em;
+        }
+      }
+      
+      /* Responsive Design - Mobile Small */
+      @media (max-width: 480px) {
+        .header {
+          padding: 12px 15px;
+        }
+        .profile-header img {
+          width: 45px;
+          height: 45px;
+          margin-right: 10px;
+        }
+        .profile-header span {
+          font-size: 0.85em;
+        }
+        .publications-main {
+          padding: 25px 15px 15px 15px;
+        }
+        .publications-main h1 {
+          font-size: 1.6rem;
+        }
+        .publication-item {
+          padding: 15px 12px;
+        }
+        .pub-title {
+          font-size: 1em;
+        }
+        .pub-authors, .pub-journal, .pub-year {
+          font-size: 0.9em;
+        }
+      }
+      
+      /* Landscape orientation adjustments */
+      @media (max-height: 500px) and (orientation: landscape) {
+        .header {
+          padding: 10px 20px;
+        }
+        .profile-header img {
+          width: 40px;
+          height: 40px;
+        }
+        .publications-main {
+          padding: 20px 20px 15px 20px;
         }
       }
     </style>
@@ -197,17 +354,20 @@
         <img src="Images/IMG_2259.JPG" alt="Profile Picture" />
         <span>Stephen Dhoal Mathew Wanbang</span>
       </div>
-      <nav class="menu">
+      <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav class="menu" id="mobileMenu">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-                  <div class="nav-dropdown">
-            <a href="projects.html">Projects <span class="dropdown-indicator"><i class="fas fa-caret-down"></i></span></a>
-            <div class="nav-dropdown-content">
-              <a href="srhr.html">SRHR</a>
-              <a href="peace-building.html">Peace Building</a>
-              <a href="advocacy.html">Advocacy</a>
-            </div>
+        <div class="nav-dropdown">
+          <a href="projects.html">Projects <span class="dropdown-indicator"><i class="fas fa-caret-down"></i></span></a>
+          <div class="nav-dropdown-content">
+            <a href="srhr.html">SRHR</a>
+            <a href="peace-building.html">Peace Building</a>
+            <a href="advocacy.html">Advocacy</a>
           </div>
+        </div>
         <a href="publications.html">Publications</a>
       </nav>
     </div>
@@ -241,5 +401,31 @@
     >
       &copy; 2024 Stephen Dhoal Mathew Wanbang. All rights reserved.
     </footer>
+    
+    <script>
+      // Mobile menu toggle
+      function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('active');
+      }
+      
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(event) {
+        const menu = document.getElementById('mobileMenu');
+        const toggle = document.querySelector('.mobile-menu-toggle');
+        
+        if (!menu.contains(event.target) && !toggle.contains(event.target)) {
+          menu.classList.remove('active');
+        }
+      });
+      
+      // Handle window resize
+      window.addEventListener('resize', function() {
+        const menu = document.getElementById('mobileMenu');
+        if (window.innerWidth > 768) {
+          menu.classList.remove('active');
+        }
+      });
+    </script>
   </body>
 </html>
