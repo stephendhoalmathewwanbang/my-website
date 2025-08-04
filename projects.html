@@ -21,6 +21,8 @@
           ),
           url("Images/IMG_2161.JPG") no-repeat center center fixed;
         background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
         color: #222;
         margin: 0;
         padding: 0;
@@ -200,6 +202,9 @@
       
       /* Responsive Design - Tablet */
       @media (max-width: 1024px) {
+        body {
+          background-attachment: scroll;
+        }
         .header {
           padding: 15px 20px;
         }
@@ -234,6 +239,10 @@
       
       /* Responsive Design - Mobile Large */
       @media (max-width: 768px) {
+        body {
+          background-attachment: scroll;
+          background-size: cover;
+        }
         .header {
           flex-direction: column;
           padding: 15px 20px;
@@ -307,6 +316,10 @@
       
       /* Responsive Design - Mobile Small */
       @media (max-width: 480px) {
+        body {
+          background-attachment: scroll;
+          background-size: cover;
+        }
         .header {
           padding: 12px 15px;
         }
